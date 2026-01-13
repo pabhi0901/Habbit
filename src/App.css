@@ -269,3 +269,34 @@
     text-align: center;
   }
 }
+
+/* Footer Styles */
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #d4a574;
+  background: linear-gradient(180deg, transparent 0%, rgba(26, 18, 9, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 200, 87, 0.1);
+  z-index: 100;
+}
+
+@media (max-width: 1024px) {
+  .app-footer {
+    left: 0;
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-footer {
+    font-size: 11px;
+    padding: 8px 16px;
+  }
+}

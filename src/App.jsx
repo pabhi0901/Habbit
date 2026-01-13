@@ -245,6 +245,10 @@ function App() {
 
         {currentView === 'targets' && <Targets />}
       </main>
+      
+      <footer className="app-footer">
+        Made with ❤️ by Abhishek
+      </footer>
     </div>
   );
 }
