@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getRandomQuote } from '../utils/spiritualQuotes';
+import Sticker from './Sticker';
+import dailyImg from '../images/daily.png';
+import weeklyImg from '../images/weekly.png';
+import monthlyImg from '../images/monthly.png';
 import './Targets.css';
 
 const Targets = () => {
@@ -185,21 +189,18 @@ const Targets = () => {
     if (activeTab === 'daily') {
       return (
         <div className="time-left-badge daily">
-          <span className="time-icon">⏰</span>
-          <span className="time-text">{timeLeft.hours}h {timeLeft.minutes}m left today</span>
+          <span className="time-text">Time left today: {timeLeft.hours}h {timeLeft.minutes}m</span>
         </div>
       );
     } else if (activeTab === 'weekly') {
       return (
         <div className="time-left-badge weekly">
-          <span className="time-icon">📅</span>
           <span className="time-text">{timeLeft.daysLeftInWeek} days left this week</span>
         </div>
       );
     } else if (activeTab === 'monthly') {
       return (
         <div className="time-left-badge monthly">
-          <span className="time-icon">📆</span>
           <span className="time-text">{timeLeft.daysLeftInMonth} days left this month</span>
         </div>
       );
@@ -343,8 +344,8 @@ const Targets = () => {
       <div className="targets-header">
         <div className="spiritual-banner">
           <div className="om-symbol">ॐ</div>
-          <h1 className="targets-title">🎯 Targets</h1>
-          <div className="radhe-text">✨ राधे राधे ✨</div>
+          <h1 className="targets-title">Targets</h1>
+          <div className="radhe-text"><Sticker variant="blessing" size="sm" /> राधे राधे</div>
         </div>
         <div className="sanskrit-motivation">
           <p className="sanskrit-text">{dailyQuote.sanskrit}</p>
@@ -358,21 +359,21 @@ const Targets = () => {
           className={`tab-btn ${activeTab === 'daily' ? 'active' : ''}`}
           onClick={() => setActiveTab('daily')}
         >
-          <span className="tab-icon">☀️</span>
+          <img src={dailyImg} alt="Daily" className="tab-image tab-image-daily" />
           <span className="tab-text">Daily</span>
         </button>
         <button
           className={`tab-btn ${activeTab === 'weekly' ? 'active' : ''}`}
           onClick={() => setActiveTab('weekly')}
         >
-          <span className="tab-icon">📅</span>
+          <img src={weeklyImg} alt="Weekly" className="tab-image tab-image-weekly" />
           <span className="tab-text">Weekly</span>
         </button>
         <button
           className={`tab-btn ${activeTab === 'monthly' ? 'active' : ''}`}
           onClick={() => setActiveTab('monthly')}
         >
-          <span className="tab-icon">📆</span>
+          <img src={monthlyImg} alt="Monthly" className="tab-image tab-image-monthly" />
           <span className="tab-text">Monthly</span>
         </button>
         <div className="tab-indicator" style={{
@@ -462,7 +463,7 @@ const Targets = () => {
                 setSelectedDate(today);
                 setCalendarDate(today);
               }}>
-                <span>⏪</span> Jump to Today
+                <Sticker variant="rewind" size="sm" /> Jump to Today
               </button>
             )}
             
@@ -474,7 +475,7 @@ const Targets = () => {
 
             {selectedPeriodTargets.length === 0 ? (
               <div className="no-targets-message">
-                <span className="no-targets-icon">📭</span>
+                <span className="no-targets-icon"><Sticker variant="inbox" size="sm" /></span>
                 <p>No {activeTab} targets on this {activeTab === 'daily' ? 'day' : activeTab === 'weekly' ? 'week' : 'month'}</p>
               </div>
             ) : (
@@ -511,7 +512,7 @@ const Targets = () => {
                         className="delete-btn"
                         onClick={() => deleteTarget(target.id)}
                       >
-                        🗑️
+                        Delete
                       </button>
                     </div>
                   );
@@ -521,10 +522,10 @@ const Targets = () => {
           </div>
         </div>
 
-        <div className="targets-list" style={{ display: 'none' }}>>
+        <div className="targets-list" style={{ display: 'none' }}>
           {targets[activeTab].length === 0 ? (
             <div className="empty-state">
-              <div className="empty-icon">🎯</div>
+              <div className="empty-icon"><Sticker variant="target" size="sm" /></div>
               <p className="empty-text">No {activeTab} targets yet</p>
               <p className="empty-subtext">Add your first target to get started!</p>
             </div>

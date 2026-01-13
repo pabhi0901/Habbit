@@ -1,34 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Sidebar.css';
 
 import AnalyticsPanel from './AnalyticsPanel';
+import habitImg from '../images/habbit.png';
+import tasksImg from '../images/tasks.png';
 
-const Sidebar = ({ habits, selectedHabit, onSelectHabit, onAddHabit, onDeleteHabit, habitData, currentView, onViewChange }) => {
-  const [newHabitName, setNewHabitName] = useState('');
-  const [showInput, setShowInput] = useState(false);
-
-  const handleAddHabit = () => {
-    if (newHabitName.trim()) {
-      onAddHabit(newHabitName.trim());
-      setNewHabitName('');
-      setShowInput(false);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleAddHabit();
-    } else if (e.key === 'Escape') {
-      setShowInput(false);
-      setNewHabitName('');
-    }
-  };
-
+const Sidebar = ({ habits, selectedHabit, onSelectHabit, onDeleteHabit, habitData, currentView, onViewChange }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-header">
         <div className="radhe-radhe-logo">✨ राधे राधे ✨</div>
-        <h1>HabitGrid</h1>
+        <h1>Sādhanā</h1>
         <p className="subtitle">2026</p>
         <div className="sanskrit-quote">
           <p className="sanskrit">कर्मण्येवाधिकारस्ते</p>
@@ -42,14 +24,14 @@ const Sidebar = ({ habits, selectedHabit, onSelectHabit, onAddHabit, onDeleteHab
           className={`view-btn ${currentView === 'habits' ? 'active' : ''}`}
           onClick={() => onViewChange('habits')}
         >
-          <span className="view-icon">🪷</span>
+          <img src={habitImg} alt="Habits" className="view-image" />
           <span>Habits</span>
         </button>
         <button 
           className={`view-btn ${currentView === 'targets' ? 'active' : ''}`}
           onClick={() => onViewChange('targets')}
         >
-          <span className="view-icon">🎯</span>
+          <img src={tasksImg} alt="Targets" className="view-image" />
           <span>Targets</span>
         </button>
       </div>
@@ -57,42 +39,7 @@ const Sidebar = ({ habits, selectedHabit, onSelectHabit, onAddHabit, onDeleteHab
       <div className="habits-list">
         <div className="habits-header">
           <h2>Habits</h2>
-          <button 
-            className="add-habit-btn"
-            onClick={() => setShowInput(true)}
-            title="Add new habit"
-          >
-            +
-          </button>
         </div>
-
-        {showInput && (
-          <div className="habit-input-container">
-            <input
-              type="text"
-              className="habit-input"
-              placeholder="Habit name..."
-              value={newHabitName}
-              onChange={(e) => setNewHabitName(e.target.value)}
-              onKeyDown={handleKeyPress}
-              autoFocus
-            />
-            <div className="habit-input-actions">
-              <button className="btn-confirm" onClick={handleAddHabit}>
-                Add
-              </button>
-              <button 
-                className="btn-cancel" 
-                onClick={() => {
-                  setShowInput(false);
-                  setNewHabitName('');
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )}
 
         <div className="habits-items">
           {Object.keys(habits).length === 0 ? (

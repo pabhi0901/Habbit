@@ -3,7 +3,7 @@ import { getDaysInYear, formatDate, formatDateDisplay, getStats } from '../utils
 import { getRandomQuote } from '../utils/spiritualQuotes';
 import './HabitGrid.css';
 
-const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
+const HabitGrid = ({ habitName, habitData, onUpdateDay, onGoHome }) => {
   const [tooltip, setTooltip] = useState({ show: false, x: 0, y: 0, content: '' });
   const [dailyQuote] = useState(() => getRandomQuote());
   const days = getDaysInYear(2026);
@@ -58,13 +58,13 @@ const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
     
     let statusText;
     if (status === 'done') {
-      statusText = '✓ Completed';
+      statusText = 'Completed';
     } else if (status === 'missed') {
-      statusText = '✗ Missed';
+      statusText = 'Missed';
     } else if (past && !status) {
-      statusText = '✗ Auto-missed (past date)';
+      statusText = 'Auto-missed (past date)';
     } else if (future) {
-      statusText = '⏱ Future date (cannot edit)';
+      statusText = 'Future date (cannot edit)';
     } else if (current) {
       statusText = 'Today - Click to mark';
     } else {
@@ -142,12 +142,19 @@ const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
         <p className="sanskrit-motiva">{dailyQuote.sanskrit}</p>
           <p className="translation-text">"{dailyQuote.translation}" - {dailyQuote.deity}</p>
         </div>
-        <button 
-          className="jump-to-analytics-btn"
-          onClick={() => document.getElementById('analytics-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-        >
-          📊 View Analytics
-        </button>
+        <div className="grid-header-actions">
+          <button 
+            className="jump-to-analytics-btn"
+            onClick={() => document.getElementById('analytics-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          >
+            📊 View Analytics
+          </button>
+          {onGoHome && (
+            <button className="go-home-btn" onClick={onGoHome}>
+              🏠 Go Home
+            </button>
+          )}
+        </div>
       </div>
       
       <div className="year-grid">
@@ -198,7 +205,14 @@ const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
 
       {/* Analytics Section */}
       <div id="analytics-section" className="analytics-section">
-        <h2 className="analytics-title">Year Overview</h2>
+        <div className="analytics-header-row">
+          <h2 className="analytics-title">Year Overview</h2>
+          {onGoHome && (
+            <button className="go-home-btn" onClick={onGoHome}>
+              🏠 Go Home
+            </button>
+          )}
+        </div>
         <div className="stats-container">
           {(() => {
             const stats = getStats(habitData);
@@ -216,7 +230,7 @@ const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
                 </div>
 
                 <div className="stat-box success">
-                  <div className="stat-icon">✓</div>
+                  <div className="stat-icon">✅</div>
                   <div className="stat-content">
                     <div className="stat-label">Completed</div>
                     <div className="stat-value">{stats.completed}</div>
@@ -227,7 +241,7 @@ const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
                 </div>
 
                 <div className="stat-box danger">
-                  <div className="stat-icon">✗</div>
+                  <div className="stat-icon">❌</div>
                   <div className="stat-content">
                     <div className="stat-label">Missed</div>
                     <div className="stat-value">{stats.missed}</div>
@@ -238,7 +252,7 @@ const HabitGrid = ({ habitName, habitData, onUpdateDay }) => {
                 </div>
 
                 <div className="stat-box highlight">
-                  <div className="stat-icon">%</div>
+                  <div className="stat-icon">📈</div>
                   <div className="stat-content">
                     <div className="stat-label">Success Rate</div>
                     <div className="stat-value">{stats.percentage}%</div>

@@ -1,0 +1,97 @@
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #1a1209;
+  border-radius: 12px;
+  padding: 6px 10px;
+  background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
+  box-shadow: 0 4px 12px rgba(255, 200, 87, 0.35);
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 200, 87, 0.6);
+  font-size: 12px;
+  min-width: 32px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sticker-sm {
+  padding: 4px 8px;
+  font-size: 11px;
+  min-width: 28px;
+  border-radius: 10px;
+}
+
+.sticker-lg {
+  padding: 8px 12px;
+  font-size: 13px;
+  min-width: 40px;
+  border-radius: 14px;
+}
+
+.sticker:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(255, 200, 87, 0.45);
+}
+
+.sticker-target {
+  background: linear-gradient(135deg, #ffc857 0%, #ff9f43 100%);
+}
+
+.sticker-sun {
+  background: linear-gradient(135deg, #ffdf6b 0%, #ffc857 100%);
+}
+
+.sticker-week {
+  background: linear-gradient(135deg, #9ad5ff 0%, #58a6ff 100%);
+}
+
+.sticker-month {
+  background: linear-gradient(135deg, #d5b3ff 0%, #a371f7 100%);
+}
+
+.sticker-clock {
+  background: linear-gradient(135deg, #ffe29f 0%, #ffa99f 100%);
+}
+
+.sticker-rewind {
+  background: linear-gradient(135deg, #b8ffeb 0%, #7ee0c3 100%);
+}
+
+.sticker-inbox {
+  background: linear-gradient(135deg, #fdd6a7 0%, #f8b18d 100%);
+}
+
+.sticker-lotus {
+  background: linear-gradient(135deg, #ffd3f5 0%, #f29bf0 100%);
+}
+
+.sticker-analytics {
+  background: linear-gradient(135deg, #9ad5ff 0%, #58a6ff 100%);
+}
+
+.sticker-streak {
+  background: linear-gradient(135deg, #ffb199 0%, #ff0844 100%);
+  color: #fff8f4;
+}
+
+.sticker-energy {
+  background: linear-gradient(135deg, #b9ffb1 0%, #5ed47a 100%);
+}
+
+.sticker-delete {
+  background: linear-gradient(135deg, #ffc0c7 0%, #ff6b6b 100%);
+}
+
+.sticker-blessing {
+  background: linear-gradient(135deg, #ffe9a3 0%, #ffc857 100%);
+}
+
+.sticker-check {
+  background: linear-gradient(135deg, #c8f7c5 0%, #7ed957 100%);
+}
+
+.sticker-miss {
+  background: linear-gradient(135deg, #ffd6d6 0%, #f18b82 100%);
+}

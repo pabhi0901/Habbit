@@ -17,13 +17,13 @@
 
 .radhe-radhe-logo {
   text-align: center;
+  margin-bottom: 12px;
   font-size: 20px;
   font-weight: 700;
   background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 12px;
   text-shadow: 0 0 20px rgba(255, 200, 87, 0.3);
   letter-spacing: 1px;
 }
@@ -74,7 +74,7 @@
 /* View Switcher */
 .view-switcher {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   padding: 16px;
   background: rgba(255, 200, 87, 0.03);
@@ -113,6 +113,13 @@
 
 .view-icon {
   font-size: 18px;
+}
+
+.view-image {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
 }
 
 .habits-list {

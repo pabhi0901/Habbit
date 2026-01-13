@@ -6,11 +6,45 @@
   margin-top: 30px;
 }
 
+.analytics-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .analytics-panel h3 {
   font-size: 20px;
   color: #c9d1d9;
   margin-bottom: 20px;
   font-weight: 600;
+}
+
+.go-home-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 200, 87, 0.1);
+  color: #ffc857;
+  border: 1px solid rgba(255, 200, 87, 0.5);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px rgba(255, 200, 87, 0.12);
+}
+
+.go-home-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 200, 87, 0.18);
+  box-shadow: 0 10px 24px rgba(255, 200, 87, 0.2);
+}
+
+.go-home-btn:active {
+  transform: translateY(0);
 }
 
 .stats-grid {
@@ -26,6 +60,14 @@
   padding: 20px;
   text-align: center;
   transition: all 0.2s ease;
+}
+
+.stat-icon {
+  font-size: 22px;
+  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stat-card:hover {
