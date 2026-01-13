@@ -17,6 +17,7 @@ function App() {
   const [newHabitName, setNewHabitName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Check authentication on mount
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
     if (isLoggedIn) {
       const loadedHabits = loadHabits();
       setHabits(loadedHabits);
+      setIsInitialized(true);
       
       // Select first habit if available
       const habitNames = Object.keys(loadedHabits);
@@ -48,12 +50,12 @@ function App() {
     }
   }, [isLoggedIn]);
 
-  // Save habits to localStorage whenever they change
+  // Save habits to localStorage whenever they change (but only after initial load)
   useEffect(() => {
-    if (Object.keys(habits).length > 0 || localStorage.getItem('habitgrid_data')) {
+    if (isInitialized) {
       saveHabits(habits);
     }
-  }, [habits]);
+  }, [habits, isInitialized]);
 
   const handleAddHabit = (habitName) => {
     const newHabits = addHabit(habits, habitName);
