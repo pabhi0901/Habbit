@@ -7,6 +7,22 @@
   height: 100vh;
   overflow-y: auto;
   box-shadow: 4px 0 20px rgba(255, 200, 87, 0.1);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    transform: translateX(-100%);
+    width: 280px;
+  }
+  
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
 }
 
 .sidebar-header {
@@ -382,4 +398,167 @@
 .legend-box.auto-missed {
   background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
   box-shadow: 0 0 12px rgba(139, 0, 0, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .sidebar-header {
+    padding: 20px 16px;
+  }
+  
+  .radhe-radhe-logo {
+    font-size: 18px;
+  }
+  
+  .sidebar-header h1 {
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+  }
+  
+  .sanskrit-quote {
+    padding: 10px;
+  }
+  
+  .sanskrit {
+    font-size: 12px;
+  }
+  
+  .translation {
+    font-size: 10px;
+  }
+  
+  .view-switcher {
+    padding: 12px;
+    gap: 6px;
+  }
+  
+  .view-btn {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .view-image {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .habits-header {
+    padding: 0 16px;
+  }
+  
+  .habits-header h2 {
+    font-size: 14px;
+  }
+  
+  .habit-item {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .sidebar-footer {
+    padding: 16px;
+  }
+  
+  .legend h3 {
+    font-size: 13px;
+  }
+  
+  .legend-item {
+    font-size: 12px;
+    gap: 10px;
+  }
+  
+  .legend-box {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 260px;
+  }
+  
+  .sidebar-header {
+    padding: 16px 12px;
+  }
+  
+  .radhe-radhe-logo {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .sidebar-header h1 {
+    font-size: 22px;
+  }
+  
+  .subtitle {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .view-switcher {
+    padding: 10px;
+    gap: 6px;
+  }
+  
+  .view-btn {
+    padding: 8px 10px;
+    font-size: 12px;
+    gap: 6px;
+  }
+  
+  .view-image {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .habits-list {
+    padding: 16px 0;
+  }
+  
+  .habits-header {
+    padding: 0 12px;
+    margin-bottom: 12px;
+  }
+  
+  .habits-header h2 {
+    font-size: 13px;
+  }
+  
+  .habits-items {
+    padding: 0 12px;
+  }
+  
+  .habit-item {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .delete-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+  
+  .sidebar-footer {
+    padding: 12px;
+  }
+  
+  .legend {
+    padding: 12px;
+  }
+  
+  .legend h3 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .legend-item {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
 }

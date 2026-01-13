@@ -5,9 +5,9 @@ import AnalyticsPanel from './AnalyticsPanel';
 import habitImg from '../images/habbit.png';
 import tasksImg from '../images/tasks.png';
 
-const Sidebar = ({ habits, selectedHabit, onSelectHabit, onDeleteHabit, habitData, currentView, onViewChange }) => {
+const Sidebar = ({ habits, selectedHabit, onSelectHabit, onDeleteHabit, habitData, currentView, onViewChange, isMobileMenuOpen, onCloseMobileMenu }) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-header">
         <div className="radhe-radhe-logo">✨ राधे राधे ✨</div>
         <h1>Sādhanā</h1>

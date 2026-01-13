@@ -2,6 +2,77 @@
   display: flex;
   min-height: 100vh;
   background: linear-gradient(135deg, #1a1209 0%, #2d1f0d 100%);
+  position: relative;
+}
+
+/* Hamburger Menu Button */
+.hamburger-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
+  border: none;
+  border-radius: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(255, 200, 87, 0.4);
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 200, 87, 0.5);
+}
+
+.hamburger-btn:active {
+  transform: scale(0.95);
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 3px;
+  background: #1a1209;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 1024px) {
+  .hamburger-btn {
+    display: flex;
+  }
+  
+  .mobile-overlay {
+    display: block;
+  }
 }
 
 .main-content {
@@ -14,6 +85,45 @@
 
 .main-content.home-mode {
   padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 80px 20px 20px;
+    width: 100%;
+  }
+  
+  .main-content.home-mode {
+    padding: 64px 0 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 72px 12px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hamburger-btn {
+    top: 12px;
+    left: 12px;
+    width: 44px;
+    height: 44px;
+  }
+  
+  .hamburger-line {
+    width: 22px;
+    height: 2.5px;
+  }
+  
+  .main-content {
+    padding: 68px 10px 10px;
+  }
+  
+  .main-content.home-mode {
+    padding: 60px 0 0 0;
+  }
 }
 
 .empty-state-main {

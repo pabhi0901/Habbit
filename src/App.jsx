@@ -3,8 +3,10 @@ import Sidebar from './components/Sidebar';
 import HabitGrid from './components/HabitGrid';
 import Targets from './components/Targets';
 import Home from './components/Home';
+import Login from './components/Login';
 import { loadHabits, saveHabits, addHabit, deleteHabit, updateHabitDay } from './utils/storage';
 import { formatDate } from './utils/dateUtils';
+import { isAuthenticated, saveAuth, verifyPassword, getStoredHash } from './utils/auth';
 import './App.css';
 
 function App() {
@@ -13,18 +15,38 @@ function App() {
   const [currentView, setCurrentView] = useState('home'); // 'home', 'habits', 'targets'
   const [showHabitInput, setShowHabitInput] = useState(false);
   const [newHabitName, setNewHabitName] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isFirstTime, setIsFirstTime] = useState(false);
 
-  // Load habits from localStorage on mount
+  // Check authentication on mount
   useEffect(() => {
-    const loadedHabits = loadHabits();
-    setHabits(loadedHabits);
-    
-    // Select first habit if available
-    const habitNames = Object.keys(loadedHabits);
-    if (habitNames.length > 0 && !selectedHabit) {
-      setSelectedHabit(habitNames[0]);
-    }
+    const checkAuth = () => {
+      const hasAuth = isAuthenticated();
+      if (!hasAuth) {
+        setIsFirstTime(true);
+        setIsLoggedIn(false);
+      } else {
+        // User needs to enter password even if hash exists
+        setIsLoggedIn(false);
+        setIsFirstTime(false);
+      }
+    };
+    checkAuth();
   }, []);
+
+  // Load habits from localStorage on mount (only when logged in)
+  useEffect(() => {
+    if (isLoggedIn) {
+      const loadedHabits = loadHabits();
+      setHabits(loadedHabits);
+      
+      // Select first habit if available
+      const habitNames = Object.keys(loadedHabits);
+      if (habitNames.length > 0 && !selectedHabit) {
+        setSelectedHabit(habitNames[0]);
+      }
+    }
+  }, [isLoggedIn]);
 
   // Save habits to localStorage whenever they change
   useEffect(() => {
@@ -81,6 +103,30 @@ function App() {
   };
 
   const handleGoHome = () => setCurrentView('home');
+
+  const handleLogin = (password) => {
+    if (isFirstTime) {
+      // First time: set the password
+      saveAuth(password);
+      setIsLoggedIn(true);
+      setIsFirstTime(false);
+      return true;
+    } else {
+      // Verify password
+      const storedHash = getStoredHash();
+      const isValid = verifyPassword(password, storedHash);
+      if (isValid) {
+        setIsLoggedIn(true);
+        return true;
+      }
+      return false;
+    }
+  };
+
+  // Show login screen if not logged in
+  if (!isLoggedIn) {
+    return <Login onLogin={handleLogin} isFirstTime={isFirstTime} />;
+  }
 
   return (
     <div className="app">
