@@ -1,0 +1,43 @@
+/* Additional Mobile Responsive Styles */
+
+@media (max-width: 768px) {
+  .empty-state-main h2 {
+    font-size: 24px;
+  }
+
+  .empty-state-main p {
+    font-size: 16px;
+  }
+
+  .habit-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .add-habit-main {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .habit-inline-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .empty-state-main {
+    padding: 20px;
+  }
+
+  .empty-state-main h2 {
+    font-size: 20px;
+  }
+
+  .empty-state-main p {
+    font-size: 14px;
+  }
+
+  .add-habit-main {
+    width: 100%;
+    text-align: center;
+  }
+}

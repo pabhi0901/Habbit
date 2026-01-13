@@ -8,6 +8,34 @@
   overflow-y: auto;
   box-shadow: 4px 0 20px rgba(255, 200, 87, 0.1);
   transition: transform 0.3s ease;
+  position: relative;
+}
+
+/* Close button for mobile sidebar */
+.sidebar-close-btn {
+  display: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 200, 87, 0.1);
+  border: 2px solid rgba(255, 200, 87, 0.3);
+  border-radius: 8px;
+  color: #ffc857;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.sidebar-close-btn:hover {
+  background: rgba(255, 200, 87, 0.2);
+  transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
@@ -22,6 +50,10 @@
   
   .sidebar.mobile-open {
     transform: translateX(0);
+  }
+
+  .sidebar-close-btn {
+    display: flex;
   }
 }
 

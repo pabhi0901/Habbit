@@ -6,7 +6,7 @@
 }
 
 /* Hamburger Menu Button */
-.hamburger-btn {
+.hamburger-menu {
   display: none;
   position: fixed;
   top: 16px;
@@ -26,12 +26,12 @@
   transition: all 0.3s ease;
 }
 
-.hamburger-btn:hover {
+.hamburger-menu:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(255, 200, 87, 0.5);
 }
 
-.hamburger-btn:active {
+.hamburger-menu:active {
   transform: scale(0.95);
 }
 
@@ -66,7 +66,7 @@
 }
 
 @media (max-width: 1024px) {
-  .hamburger-btn {
+  .hamburger-menu {
     display: flex;
   }
   
@@ -225,4 +225,47 @@
 
 .habit-inline-form button:hover {
   transform: translateY(-1px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .empty-state-main h2 {
+    font-size: 24px;
+  }
+
+  .empty-state-main p {
+    font-size: 16px;
+  }
+
+  .habit-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .add-habit-main {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .habit-inline-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .empty-state-main {
+    padding: 20px;
+  }
+
+  .empty-state-main h2 {
+    font-size: 20px;
+  }
+
+  .empty-state-main p {
+    font-size: 14px;
+  }
+
+  .add-habit-main {
+    width: 100%;
+    text-align: center;
+  }
 }

@@ -18,6 +18,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Check authentication on mount
   useEffect(() => {
@@ -102,6 +103,7 @@ function App() {
 
   const handleSelectHabit = (habitName) => {
     setSelectedHabit(habitName);
+    setIsMobileMenuOpen(false); // Close menu on mobile when habit is selected
   };
 
   const handleGoHome = () => setCurrentView('home');
@@ -132,13 +134,37 @@ function App() {
 
   return (
     <div className="app">
+      {/* Hamburger Menu Button */}
+      <button 
+        className="hamburger-menu"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></span>
+        <span className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></span>
+        <span className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></span>
+      </button>
+
+      {/* Overlay for mobile */}
+      {isMobileMenuOpen && (
+        <div 
+          className="mobile-overlay" 
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
+
       <Sidebar
         habits={habits}
         selectedHabit={selectedHabit}
         onSelectHabit={handleSelectHabit}
         onDeleteHabit={handleDeleteHabit}
         currentView={currentView}
-        onViewChange={setCurrentView}
+        onViewChange={(view) => {
+          setCurrentView(view);
+          setIsMobileMenuOpen(false); // Close menu when switching views
+        }}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onCloseMobileMenu={() => setIsMobileMenuOpen(false)}
       />
       
       <main className={`main-content ${currentView === 'home' ? 'home-mode' : ''}`}>
