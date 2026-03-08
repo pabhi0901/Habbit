@@ -1,0 +1,567 @@
+/* ─── Goals Summary Container ─── */
+.goals-summary {
+  padding: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ─── Header ─── */
+.gs-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 200, 87, 0.2);
+}
+
+.gs-title {
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+}
+
+.gs-subtitle {
+  font-size: 14px;
+  color: #8b7355;
+}
+
+/* ─── Stats Grid ─── */
+.gs-stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.gs-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14px 20px;
+  background: rgba(255, 200, 87, 0.05);
+  border: 1px solid rgba(255, 200, 87, 0.18);
+  border-radius: 10px;
+  min-width: 80px;
+  transition: transform 0.2s;
+}
+
+.gs-stat:hover {
+  transform: translateY(-2px);
+}
+
+.gs-stat-active {
+  border-color: rgba(255, 200, 87, 0.35);
+  background: rgba(255, 200, 87, 0.08);
+}
+
+.gs-stat-done {
+  border-color: rgba(76, 175, 80, 0.35);
+  background: rgba(76, 175, 80, 0.06);
+}
+
+.gs-stat-fail {
+  border-color: rgba(244, 67, 54, 0.3);
+  background: rgba(244, 67, 54, 0.05);
+}
+
+.gs-stat-overdue {
+  border-color: rgba(255, 152, 0, 0.4);
+  background: rgba(255, 152, 0, 0.08);
+}
+
+.gs-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffc857;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.gs-stat-active .gs-stat-num { color: #ffc857; }
+.gs-stat-done .gs-stat-num { color: #4caf50; }
+.gs-stat-fail .gs-stat-num { color: #f44336; }
+.gs-stat-overdue .gs-stat-num { color: #ff9800; }
+
+.gs-stat-lbl {
+  font-size: 11px;
+  color: #8b7355;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* ─── Empty ─── */
+.gs-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.gs-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.gs-empty p {
+  font-size: 15px;
+  color: #8b7355;
+}
+
+.gs-empty strong {
+  color: #ffc857;
+}
+
+/* ─── Sections ─── */
+.gs-section {
+  margin-bottom: 32px;
+}
+
+.gs-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffc857;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 200, 87, 0.15);
+}
+
+/* ─── Timeline ─── */
+.gs-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.gs-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255, 200, 87, 0.4) 0%, rgba(255, 200, 87, 0.05) 100%);
+  border-radius: 2px;
+}
+
+.gs-timeline-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 14px 14px 0;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 200, 87, 0.07);
+}
+
+.gs-timeline-item:last-child {
+  border-bottom: none;
+}
+
+.gs-tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 200, 87, 0.5);
+  border: 2px solid #ffc857;
+  flex-shrink: 0;
+  position: absolute;
+  left: -20px;
+  top: 18px;
+  box-shadow: 0 0 6px rgba(255, 200, 87, 0.3);
+}
+
+.tl-overdue .gs-tl-dot {
+  background: rgba(255, 152, 0, 0.6);
+  border-color: #ff9800;
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
+}
+
+.tl-urgent .gs-tl-dot {
+  background: rgba(255, 200, 87, 0.8);
+  box-shadow: 0 0 8px rgba(255, 200, 87, 0.5);
+}
+
+.type-sub .gs-tl-dot {
+  width: 8px;
+  height: 8px;
+  left: -18px;
+  top: 20px;
+  background: rgba(212, 168, 116, 0.5);
+  border-color: #d4a574;
+}
+
+.gs-tl-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gs-tl-parent {
+  display: block;
+  font-size: 11px;
+  color: #6b5b3e;
+  margin-bottom: 3px;
+  font-style: italic;
+}
+
+.gs-tl-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+
+.gs-tl-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0e0b0;
+  word-break: break-word;
+}
+
+.type-sub .gs-tl-title {
+  font-size: 13px;
+  color: #d4b87a;
+  font-weight: 600;
+}
+
+.gs-tl-days {
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tl-text-overdue { color: #ff7043; }
+.tl-text-urgent  { color: #ffa726; }
+.tl-text-safe    { color: #66bb6a; }
+
+.gs-tl-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #6b5b3e;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.gs-tl-progress {
+  height: 5px;
+  background: rgba(255, 200, 87, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.gs-tl-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc857 0%, #ffaa33 100%);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.type-sub .gs-tl-progress {
+  height: 4px;
+}
+
+.type-sub .gs-tl-progress-fill {
+  background: linear-gradient(90deg, #d4a574 0%, #ffc857 100%);
+}
+
+/* ─── Breakdown Section ─── */
+.gs-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gs-goal-row {
+  background: rgba(255, 200, 87, 0.04);
+  border: 1.5px solid rgba(255, 200, 87, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  transition: box-shadow 0.2s;
+}
+
+.gs-goal-row:hover {
+  box-shadow: 0 4px 16px rgba(255, 200, 87, 0.1);
+}
+
+.gs-goal-row.status-completed {
+  border-color: rgba(76, 175, 80, 0.3);
+  background: rgba(76, 175, 80, 0.04);
+}
+
+.gs-goal-row.status-failed {
+  border-color: rgba(244, 67, 54, 0.25);
+  background: rgba(244, 67, 54, 0.03);
+}
+
+.gs-goal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.gs-goal-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gs-goal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f0e0b0;
+}
+
+.gs-goal-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gs-goal-meta-item {
+  font-size: 12px;
+  color: #7a6440;
+}
+
+.gs-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.gs-badge-active {
+  background: rgba(255, 200, 87, 0.15);
+  color: #ffc857;
+  border: 1px solid rgba(255, 200, 87, 0.3);
+}
+
+.gs-badge-completed {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.gs-badge-failed {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.gs-goal-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.gs-goal-progress {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 200, 87, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gs-goal-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc857 0%, #ffaa33 100%);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.gs-goal-progress-pct {
+  font-size: 11px;
+  color: #8b7355;
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ─── Sub-targets in Breakdown ─── */
+.gs-sub-list {
+  border-top: 1px solid rgba(255, 200, 87, 0.1);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.gs-sub-count {
+  font-size: 11px;
+  color: #6b5b3e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.gs-sub-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 10px;
+  margin-bottom: 6px;
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.15);
+  border-left: 3px solid rgba(212, 168, 116, 0.3);
+  transition: border-color 0.2s;
+}
+
+.gs-sub-row:hover {
+  border-left-color: #d4a574;
+}
+
+.gs-sub-row:last-child {
+  margin-bottom: 0;
+}
+
+.sub-status-completed { border-left-color: rgba(76, 175, 80, 0.35) !important; }
+.sub-status-failed    { border-left-color: rgba(244, 67, 54, 0.3) !important; }
+
+.gs-sub-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.dot-active    { background: #ffc857; box-shadow: 0 0 5px rgba(255, 200, 87, 0.4); }
+.dot-completed { background: #4caf50; box-shadow: 0 0 5px rgba(76, 175, 80, 0.4); }
+.dot-failed    { background: #f44336; box-shadow: 0 0 5px rgba(244, 67, 54, 0.4); }
+
+.gs-sub-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gs-sub-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.gs-sub-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c8a870;
+  word-break: break-word;
+}
+
+.gs-sub-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.gs-sub-meta-item {
+  font-size: 11px;
+  color: #6b5b3e;
+}
+
+.gs-sub-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 8px;
+}
+
+.gs-sub-progress {
+  height: 4px;
+  background: rgba(255, 200, 87, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.gs-sub-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4a574 0%, #ffc857 100%);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .goals-summary {
+    padding: 16px;
+  }
+
+  .gs-title {
+    font-size: 22px;
+  }
+
+  .gs-stats-grid {
+    gap: 8px;
+  }
+
+  .gs-stat {
+    padding: 10px 14px;
+    min-width: 68px;
+  }
+
+  .gs-stat-num {
+    font-size: 22px;
+  }
+
+  .gs-goal-row {
+    padding: 12px 14px;
+  }
+
+  .gs-goal-title {
+    font-size: 14px;
+  }
+
+  .gs-goal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gs-tl-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gs-stat {
+    padding: 8px 12px;
+    min-width: 58px;
+  }
+
+  .gs-stat-num {
+    font-size: 20px;
+  }
+
+  .gs-stat-lbl {
+    font-size: 10px;
+  }
+
+  .gs-timeline {
+    padding-left: 18px;
+  }
+
+  .gs-tl-dot {
+    left: -15px;
+  }
+
+  .type-sub .gs-tl-dot {
+    left: -13px;
+  }
+}

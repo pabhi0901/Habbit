@@ -4,6 +4,9 @@ import HabitGrid from './components/HabitGrid';
 import Targets from './components/Targets';
 import Home from './components/Home';
 import Login from './components/Login';
+import GoalTracker from './components/GoalTracker';
+import GoalsSummary from './components/GoalsSummary';
+import GoalDetail from './components/GoalDetail';
 import { loadHabits, saveHabits, addHabit, deleteHabit, updateHabitDay } from './utils/storage';
 import { formatDate } from './utils/dateUtils';
 import { isAuthenticated, saveAuth, verifyPassword, getStoredHash } from './utils/auth';
@@ -12,13 +15,14 @@ import './App.css';
 function App() {
   const [habits, setHabits] = useState({});
   const [selectedHabit, setSelectedHabit] = useState(null);
-  const [currentView, setCurrentView] = useState('home'); // 'home', 'habits', 'targets'
+  const [currentView, setCurrentView] = useState('home'); // 'home', 'habits', 'targets', 'goals', 'goals-summary', 'goal-detail'
   const [showHabitInput, setShowHabitInput] = useState(false);
   const [newHabitName, setNewHabitName] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedGoalId, setSelectedGoalId] = useState(null);
 
   // Check authentication on mount
   useEffect(() => {
@@ -244,6 +248,20 @@ function App() {
         )}
 
         {currentView === 'targets' && <Targets />}
+
+        {currentView === 'goals' && <GoalTracker onOpenGoalDetail={(id) => {
+          setSelectedGoalId(id);
+          setCurrentView('goal-detail');
+        }} />}
+
+        {currentView === 'goal-detail' && selectedGoalId && (
+          <GoalDetail
+            goalId={selectedGoalId}
+            onBack={() => setCurrentView('goals')}
+          />
+        )}
+
+        {currentView === 'goals-summary' && <GoalsSummary />}
       </main>
       
       <footer className="app-footer">

@@ -34,6 +34,20 @@ const Sidebar = ({ habits, selectedHabit, onSelectHabit, onDeleteHabit, habitDat
           <img src={tasksImg} alt="Targets" className="view-image" />
           <span>Targets</span>
         </button>
+        <button 
+          className={`view-btn ${currentView === 'goals' ? 'active' : ''}`}
+          onClick={() => onViewChange('goals')}
+        >
+          <span className="view-emoji">🎯</span>
+          <span>Goals</span>
+        </button>
+        <button 
+          className={`view-btn ${currentView === 'goals-summary' ? 'active' : ''}`}
+          onClick={() => onViewChange('goals-summary')}
+        >
+          <span className="view-emoji">📊</span>
+          <span>Summary</span>
+        </button>
       </div>
 
       <div className="habits-list">

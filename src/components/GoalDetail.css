@@ -1,0 +1,746 @@
+/* ─── Goal Detail Page ─── */
+.gd-container {
+  padding: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  animation: gdFadeIn 0.4s ease;
+}
+
+@keyframes gdFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Back Button */
+.gd-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: rgba(255, 200, 87, 0.08);
+  border: 1.5px solid rgba(255, 200, 87, 0.25);
+  border-radius: 8px;
+  color: #ffc857;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 24px;
+}
+
+.gd-back-btn:hover {
+  background: rgba(255, 200, 87, 0.15);
+  border-color: #ffc857;
+  transform: translateX(-3px);
+}
+
+/* Not Found */
+.gd-not-found {
+  text-align: center;
+  padding: 80px 20px;
+  color: #8b7355;
+  font-size: 16px;
+}
+
+/* ─── Hero Section ─── */
+.gd-hero {
+  background: rgba(255, 200, 87, 0.04);
+  border: 1.5px solid rgba(255, 200, 87, 0.2);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 28px;
+}
+
+.gd-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.gd-hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gd-status-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.gd-badge-active {
+  background: rgba(255, 200, 87, 0.15);
+  color: #ffc857;
+  border: 1px solid rgba(255, 200, 87, 0.35);
+}
+
+.gd-badge-completed {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.35);
+}
+
+.gd-badge-failed {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.35);
+}
+
+/* ─── Big Countdown ─── */
+.gd-countdown {
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 24px;
+  background: rgba(255, 200, 87, 0.06);
+  border: 1.5px solid rgba(255, 200, 87, 0.2);
+  border-radius: 14px;
+}
+
+.gd-countdown.expired {
+  background: rgba(244, 67, 54, 0.08);
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+.gd-countdown-expired {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f44336;
+}
+
+.gd-countdown-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.gd-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.gd-countdown-num {
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.gd-countdown-label {
+  font-size: 12px;
+  color: #8b7355;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.gd-countdown-sep {
+  font-size: 36px;
+  font-weight: 800;
+  color: rgba(255, 200, 87, 0.4);
+  padding-bottom: 16px;
+}
+
+/* ─── Info Cards ─── */
+.gd-info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.gd-info-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255, 200, 87, 0.04);
+  border: 1px solid rgba(255, 200, 87, 0.15);
+  border-radius: 10px;
+  transition: border-color 0.2s;
+}
+
+.gd-info-card:hover {
+  border-color: rgba(255, 200, 87, 0.35);
+}
+
+.gd-info-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.gd-info-label {
+  display: block;
+  font-size: 11px;
+  color: #6b5b3e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.gd-info-value {
+  display: block;
+  font-size: 14px;
+  color: #f0e0b0;
+  font-weight: 600;
+}
+
+/* ─── Progress ─── */
+.gd-progress-section {
+  margin-bottom: 20px;
+}
+
+.gd-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #8b7355;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.gd-progress-bar {
+  height: 8px;
+  background: rgba(255, 200, 87, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gd-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc857 0%, #ffaa33 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* ─── Goal Actions ─── */
+.gd-goal-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gd-action-btn {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gd-action-complete {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1.5px solid rgba(76, 175, 80, 0.35);
+}
+
+.gd-action-complete:hover {
+  background: rgba(76, 175, 80, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.gd-action-fail {
+  background: rgba(244, 67, 54, 0.12);
+  color: #f44336;
+  border: 1.5px solid rgba(244, 67, 54, 0.3);
+}
+
+.gd-action-fail:hover {
+  background: rgba(244, 67, 54, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.2);
+}
+
+.gd-action-reopen {
+  background: rgba(255, 200, 87, 0.12);
+  color: #ffc857;
+  border: 1.5px solid rgba(255, 200, 87, 0.35);
+}
+
+.gd-action-reopen:hover {
+  background: rgba(255, 200, 87, 0.22);
+  transform: translateY(-2px);
+}
+
+/* ─── Sub-targets Section ─── */
+.gd-sub-section {
+  background: rgba(255, 200, 87, 0.03);
+  border: 1.5px solid rgba(255, 200, 87, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.gd-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gd-sub-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffc857;
+}
+
+.gd-add-sub-btn {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffc857;
+  background: rgba(255, 200, 87, 0.12);
+  border: 1.5px solid rgba(255, 200, 87, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gd-add-sub-btn:hover {
+  background: rgba(255, 200, 87, 0.22);
+  transform: translateY(-1px);
+}
+
+/* ─── Add Sub-target Form ─── */
+.gd-add-sub-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(255, 200, 87, 0.05);
+  border-radius: 10px;
+  border: 1px dashed rgba(255, 200, 87, 0.25);
+}
+
+.gd-input {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 14px;
+  background: rgba(255, 200, 87, 0.06);
+  border: 1.5px solid rgba(255, 200, 87, 0.25);
+  border-radius: 8px;
+  color: #f0e0b0;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.gd-input::placeholder {
+  color: #6b5b3e;
+}
+
+.gd-input:focus {
+  border-color: #ffc857;
+  background: rgba(255, 200, 87, 0.09);
+}
+
+.gd-days-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gd-days-input {
+  flex: none;
+  width: 80px;
+  min-width: unset;
+  text-align: center;
+}
+
+.gd-days-label {
+  font-size: 13px;
+  color: #8b7355;
+  white-space: nowrap;
+}
+
+.gd-save-btn {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #ffc857 0%, #ffaa33 100%);
+  border: none;
+  border-radius: 8px;
+  color: #1a1209;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gd-save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 200, 87, 0.4);
+}
+
+/* ─── Sub-target Empty ─── */
+.gd-sub-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b5b3e;
+}
+
+.gd-sub-empty-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.gd-sub-empty-hint {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* ─── Sub-target Cards ─── */
+.gd-sub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gd-sub-card {
+  background: rgba(255, 200, 87, 0.04);
+  border: 1.5px solid rgba(255, 200, 87, 0.15);
+  border-left: 4px solid rgba(255, 200, 87, 0.4);
+  border-radius: 10px;
+  padding: 16px 18px;
+  transition: all 0.25s;
+  animation: gdSlideIn 0.3s ease both;
+}
+
+@keyframes gdSlideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.gd-sub-card:hover {
+  border-left-color: #ffc857;
+  background: rgba(255, 200, 87, 0.07);
+  box-shadow: 0 2px 12px rgba(255, 200, 87, 0.08);
+}
+
+.gd-sub-completed {
+  border-left-color: rgba(76, 175, 80, 0.5) !important;
+  background: rgba(76, 175, 80, 0.04) !important;
+}
+
+.gd-sub-failed {
+  border-left-color: rgba(244, 67, 54, 0.4) !important;
+  background: rgba(244, 67, 54, 0.03) !important;
+}
+
+.gd-sub-overdue {
+  border-left-color: rgba(255, 152, 0, 0.6) !important;
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.1);
+}
+
+.gd-sub-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.gd-sub-card-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.gd-sub-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: #8b7355;
+  background: rgba(255, 200, 87, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.gd-sub-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f0e0b0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+.gd-sub-completed .gd-sub-card-title {
+  text-decoration: line-through;
+  color: #76b879;
+}
+
+.gd-sub-failed .gd-sub-card-title {
+  text-decoration: line-through;
+  color: #e57373;
+}
+
+.gd-sub-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.gd-sbadge-active {
+  background: rgba(255, 200, 87, 0.15);
+  color: #ffc857;
+  border: 1px solid rgba(255, 200, 87, 0.3);
+}
+
+.gd-sbadge-completed {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.gd-sbadge-failed {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+/* Sub-target action buttons */
+.gd-sub-card-actions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.gd-sbtn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.gd-sbtn-done {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.gd-sbtn-done:hover {
+  background: rgba(76, 175, 80, 0.3);
+  transform: scale(1.1);
+}
+
+.gd-sbtn-fail {
+  background: rgba(244, 67, 54, 0.12);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.gd-sbtn-fail:hover {
+  background: rgba(244, 67, 54, 0.25);
+  transform: scale(1.1);
+}
+
+.gd-sbtn-reopen {
+  background: rgba(255, 200, 87, 0.12);
+  color: #ffc857;
+  border: 1px solid rgba(255, 200, 87, 0.3);
+  font-size: 15px;
+}
+
+.gd-sbtn-reopen:hover {
+  background: rgba(255, 200, 87, 0.25);
+  transform: scale(1.1);
+}
+
+.gd-sbtn-delete {
+  background: rgba(244, 67, 54, 0.07);
+  color: #c0392b;
+  border: 1px solid rgba(244, 67, 54, 0.15);
+  font-size: 17px;
+  opacity: 0.4;
+}
+
+.gd-sub-card:hover .gd-sbtn-delete {
+  opacity: 1;
+}
+
+.gd-sbtn-delete:hover {
+  background: rgba(244, 67, 54, 0.2);
+  transform: scale(1.1);
+}
+
+/* ─── Sub-target body ─── */
+.gd-sub-card-body {
+  padding-left: 0;
+}
+
+.gd-sub-time-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.gd-sub-countdown {
+  font-size: 14px;
+  font-weight: 700;
+  color: #66bb6a;
+  white-space: nowrap;
+}
+
+.gd-sub-countdown.expired {
+  color: #f44336;
+}
+
+.gd-sub-countdown.urgent {
+  color: #ffa726;
+}
+
+.gd-sub-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: #6b5b3e;
+  flex-wrap: wrap;
+}
+
+.gd-sub-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gd-sub-progress {
+  flex: 1;
+  height: 5px;
+  background: rgba(255, 200, 87, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.gd-sub-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d4a574 0%, #ffc857 100%);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.gd-sub-progress-pct {
+  font-size: 11px;
+  color: #8b7355;
+  min-width: 32px;
+  text-align: right;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .gd-container {
+    padding: 16px;
+  }
+
+  .gd-hero {
+    padding: 20px 16px;
+  }
+
+  .gd-hero-title {
+    font-size: 22px;
+  }
+
+  .gd-countdown-num {
+    font-size: 36px;
+  }
+
+  .gd-countdown-sep {
+    font-size: 28px;
+  }
+
+  .gd-info-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .gd-sub-section {
+    padding: 16px;
+  }
+
+  .gd-add-sub-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gd-input {
+    min-width: unset;
+  }
+
+  .gd-days-input {
+    width: 100%;
+  }
+
+  .gd-sub-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gd-sub-card-actions {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .gd-countdown-num {
+    font-size: 28px;
+  }
+
+  .gd-countdown-unit {
+    min-width: 50px;
+  }
+
+  .gd-info-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .gd-hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gd-goal-actions {
+    flex-direction: column;
+  }
+
+  .gd-action-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
